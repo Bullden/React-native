@@ -9,12 +9,13 @@ import {
 import {RaisedTextButton} from 'react-native-material-buttons';
 import {View, PermissionsAndroid} from 'react-native';
 
-import DeviceInfo from 'react-native-device-info';
+import DeviceInfo, { getPhoneNumber } from 'react-native-device-info';
 import RNSimData from 'react-native-sim-data';
 //import { getManufacturer } from 'react-native-device-info';
 import {RootState} from 'src/redux/rootReducer';
 import {LoginRequest, LoginState} from 'src/redux/login/types';
 import {doLogin} from '../../redux/login/actions';
+
 export interface LoginProps {
   doLogin: (data: LoginRequest) => object;
   isLoggedIn: boolean;
@@ -46,7 +47,7 @@ class AuthComponent extends Component<LoginProps, any> {
       isLoggedIn: true,
     });
     const {navigate} = this.props.navigation;
-    navigate('Show');
+    navigate('Congratulation');
   };
   async requestPermission() {
     try {
@@ -85,7 +86,10 @@ class AuthComponent extends Component<LoginProps, any> {
       console.log('getCountryCode: ', RNSimData.getCountryCode());
       console.log('getCarrierName: ', RNSimData.getCarrierName());
 
-      console.log('getPhoneNumber: ', DeviceInfo.getPhoneNumber());
+      console.log('getPhoneNumber: ', DeviceInfo.getPhoneNumber().then(getPhoneNumber => {
+        console.log(getPhoneNumber);
+        
+      }));
     });
 
     this.requestPermission();

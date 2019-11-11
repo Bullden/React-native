@@ -28,9 +28,12 @@ import {
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import  AuthComponent  from './src/components/auth.component/auth.component';
+
 import { RootState } from 'src/redux/rootReducer';
 import { connect } from "react-redux";
+import WeatherComponent from './src/components/weather.component/weather.component';
 import ShowDataComponent from './src/components/auth.component/show-data.component';
+import weatherComponent from 'src/components/weather.component/weather.component';
 
 export interface AppProps {
   name: string
@@ -59,7 +62,8 @@ export interface AppProps {
 
 const MainNavigator = createStackNavigator({
   Auth: {screen: AuthComponent},
-  Show: {screen: ShowDataComponent},
+  Congratulation: {screen: ShowDataComponent},
+  Weather: {screen: WeatherComponent}
 });
 
 const App = createAppContainer(MainNavigator);

@@ -34,6 +34,7 @@ module.file_ext=.js
 module.file_ext=.json
 module.file_ext=.ios.js
 
+
 munge_underscores=true
 
 module.name_mapper='^react-native$' -> '<PROJECT_ROOT>/node_modules/react-native/Libraries/react-native/react-native-implementation'
